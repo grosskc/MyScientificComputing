@@ -1,5 +1,7 @@
 # My Scientific Computing and Publishing Setup
 
+## MacOS
+
 * Install [Brew](https://brew.sh) package manager for MacOS
 
 ```bash
@@ -22,7 +24,7 @@ python3 -m pip install --upgrade pip
 * Install univeral Python 3 packages
 
 ```bash
-python -m pip install --upgrade ipython jupyterlab ipywidgets nbconvert ipykernel autopep8 black yapf isort pipreqs pylint python-language-server[all] genson pipreqs cookiecutter python-dotenv sphinx sphinx-autobuild jsonmerge jupytext pandoc-eqnos pandoc-fignos pandoc-tablenos
+python3 -m pip install --upgrade ipython jupyterlab ipywidgets nbconvert ipykernel autopep8 black yapf isort pipreqs pylint python-language-server[all] genson pipreqs cookiecutter python-dotenv sphinx sphinx-autobuild jsonmerge jupytext pandoc-eqnos pandoc-fignos pandoc-tablenos
 ```
 
 * Install [pandoc](https://pandoc.org/installing.html) and related useful stuff
@@ -51,14 +53,14 @@ npm install -g mathjax-pandoc-filter
 * Make virtual environment for scipy
 
 ```bash
-python -m venv --system-site-packages ./venv/scipy
+python3 -m venv --system-site-packages ./venv/scipy
 source venv/scipy/bin/activate
 ```
 
 * Install scientific packages into the virtual environment
 
 ```bash
-python -m pip install --upgrade scikit-learn scikit-image matplotlib sympy pandas xarray cython tensorly pymc3 nose numexpr Pillow h5py netCDF4 cfunits wpca keras tensorflow pydot statsmodels constrNMPy spectral seaborn dask ipympl pyro-ppl torch torchvision pweave
+python3 -m pip install --upgrade scikit-learn scikit-image matplotlib sympy pandas xarray cython tensorly pymc3 nose numexpr Pillow h5py netCDF4 cfunits wpca keras tensorflow pydot statsmodels constrNMPy spectral seaborn dask ipympl pyro-ppl torch torchvision pweave
 ```
 
 * Inspect currently-installed packages
@@ -102,6 +104,12 @@ jupyter labextension install jupyterlab-jupytext
 ```bash
 deactivate
 ```
+
+## Linux
+
+* Install Ubuntu 18.04.2 LTS
+
+
 
 ## Tips and Tricks
 
