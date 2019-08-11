@@ -22,7 +22,7 @@ python3 -m pip install --upgrade pip
 * Install univeral Python 3 packages
 
 ```bash
-python3 -m pip install --upgrade ipython jupyterlab ipywidgets nbconvert ipykernel autopep8 black yapf isort pipreqs pylint python-language-server[all] genson pipreqs cookiecutter python-dotenv sphinx sphinx-autobuild jsonmerge jupytext pandoc-eqnos pandoc-fignos pandoc-tabnos
+python -m pip install --upgrade ipython jupyterlab ipywidgets nbconvert ipykernel autopep8 black yapf isort pipreqs pylint python-language-server[all] genson pipreqs cookiecutter python-dotenv sphinx sphinx-autobuild jsonmerge jupytext pandoc-eqnos pandoc-fignos pandoc-tablenos
 ```
 
 * Install [pandoc](https://pandoc.org/installing.html) and related useful stuff
@@ -51,14 +51,14 @@ npm install -g mathjax-pandoc-filter
 * Make virtual environment for scipy
 
 ```bash
-python3 -m venv --system-site-packages ./venv/scipy
+python -m venv --system-site-packages ./venv/scipy
 source venv/scipy/bin/activate
 ```
 
 * Install scientific packages into the virtual environment
 
 ```bash
-python3 -m pip install --upgrade scikit-learn scikit-image matplotlib sympy pandas xarray cython tensorly pymc3 nose numexpr Pillow h5py netCDF4 cfunits wpca keras tensorflow pydot statsmodels constrNMPy spectral seaborn dask ipympl pyro-ppl torch torchvision pweave
+python -m pip install --upgrade scikit-learn scikit-image matplotlib sympy pandas xarray cython tensorly pymc3 nose numexpr Pillow h5py netCDF4 cfunits wpca keras tensorflow pydot statsmodels constrNMPy spectral seaborn dask ipympl pyro-ppl torch torchvision pweave
 ```
 
 * Inspect currently-installed packages
