@@ -120,24 +120,30 @@ sudo apt-get install git git-gui git-doc
 
 * Install conda
 
+It is useful to install for all users as described [here](https://medium.com/@pjptech/installing-anaconda-for-multiple-users-650b2a6666c6). To do so, install Anaconda in `/usr/local/anaconda3`. Then do the following:
+
+```bash
+sudo adduser anaconda
+sudo chown -R anaconda:anaconda /opt/anaconda
+sudo chmod -R go-w /opt/anaconda
+sudo chmod -R go+rX /opt/anaconda
+su -c 'printf "# Add anaconda to path\nPATH=$PATH:/usr/local/anaconda3/bin/" >> /home/anaconda/.bashrc' anaconda
+```
+
+* Install dlib
+
+Note there is no conda package
+
+```bash
+pip3 install dlib --verbose
+```
+
 * Install OpenCV
 
 Found information [here](https://docs.opencv.org/4.1.1/d2/de6/tutorial_py_setup_in_ubuntu.html) and [here](https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv/)
 
 ```bash
 #!/bin/bash
-
-echo "OpenCV installation by learnOpenCV.com"
-# Define OpenCV Version to install 
-cvVersion="master"
-
-# Clean build directories
-rm -rf opencv/build
-rm -rf opencv_contrib/build
-
-# Create directory for installation
-mkdir installation
-mkdir installation/OpenCV-"$cvVersion"
 
 # Save current working directory
 cwd=$(pwd)
@@ -151,6 +157,7 @@ sudo apt -y remove x264 libx264-dev
 sudo apt -y install build-essential checkinstall cmake pkg-config yasm
 sudo apt -y install git gfortran
 sudo apt -y install libjpeg8-dev libpng-dev
+sudo apt-get install libgtk-3-dev libboost-python-dev
  
 sudo apt -y install software-properties-common
 sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
@@ -173,29 +180,63 @@ sudo apt -y install libvorbis-dev libxvidcore-dev
 sudo apt -y install libopencore-amrnb-dev libopencore-amrwb-dev
 sudo apt -y install libavresample-dev
 sudo apt -y install x264 v4l-utils
+sudo apt -y install mesa-common-dev libglbinding-dev
+sudo apt -y install libgtk-3-dev libtbb-dev qt5-default
  
 # Optional dependencies
 sudo apt -y install libprotobuf-dev protobuf-compiler
 sudo apt -y install libgoogle-glog-dev libgflags-dev
 sudo apt -y install libgphoto2-dev libeigen3-dev libhdf5-dev doxygen
 
+sudo apt -y install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libdc1394-22-dev
+sudo apt -y install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
+sudo apt -y install libatlas-base-dev
+sudo apt -y install libfaac-dev libmp3lame-dev libtheora-dev
+sudo apt -y install libxvidcore-dev libx264-dev
+sudo apt -y install libopencore-amrnb-dev libopencore-amrwb-dev
+sudo apt -y install libgphoto2-dev libeigen3-dev libhdf5-dev doxygen x264 v4l-utils
+sudo apt -y install libglu1-mesa-dev freeglut3-dev mesa-common-dev
+sudo apt -y install libfltk1.3-dev libgtkglext1 libgtkglext1-dev python-gtkglext1
+
 sudo apt -y install python3-dev python3-pip
 sudo -H pip3 install -U pip numpy
 sudo apt -y install python3-testresources
 
-cd $cwd
-############ For Python 3 ############
-# create virtual environment
-python3 -m venv OpenCV-"$cvVersion"-py3
-echo "# Virtual Environment Wrapper" >> ~/.bashrc
-echo "alias workoncv-$cvVersion=\"source $cwd/OpenCV-$cvVersion-py3/bin/activate\"" >> ~/.bashrc
-source "$cwd"/OpenCV-"$cvVersion"-py3/bin/activate
+sudo apt-get install gtk2.0-examples libgail-doc libgtk2.0-0 libgail18 libgail-dev \
+     libgtk2.0-common gtk2-engines-pixbuf libgail-common libgtk2.0-0 gtk2.0-examples \
+     gtk2-engines-pixbuf libgtk2.0-doc libgtk2.0-bin libgtk2.0-0 \
+     gir1.2-gtk-2.0 libgail18 libgtk2.0-dev
+sudo apt-get install libgtkglext1 libgtkglext1-dev
+sudo apt-get build-dep opencv
 
-# now install python libraries within this virtual environment
-pip install numpy scipy matplotlib scikit-image scikit-learn ipython dlib --user
- 
-# quit virtual environment
-deactivate
+
+rm -rf build && mkdir build && cd build
+cmake -D CMAKE_BUILD_TYPE=RELEASE \
+      -D CMAKE_INSTALL_PREFIX=/usr/local/opencv \
+      -D INSTALL_C_EXAMPLES=ON \
+      -D INSTALL_PYTHON_EXAMPLES=ON \
+      -D WITH_TBB=ON \
+      -D WITH_V4L=ON \
+      -D BUILD_TIFF=ON \
+      -D BUILD_NEW_PYTHON_SUPPORT=ON \
+      -D PYTHON3_EXECUTABLE=/usr/local/anaconda3/bin/python3 \
+      -D PYTHON3_INCLUDE_DIR=/usr/local/anaconda3/include \
+      -D PYTHON3_INCLUDE_DIR2=/usr/local/anaconda3/x86_64-conda_cos6-linux-gnu \
+      -D OPENCV_PYTHON3_INSTALL_PATH=/usr/local/anaconda3/lib/python3.6/site-packages \
+      -D WITH_QT=OFF \
+      -D WITH_GTK=ON \
+      -D WITH_OPENGL=ON \
+      -D WITH_OPENCL=ON \
+      -D WITH_CUDA=ON \
+      -D ENABLE_FAST_MATH=1 \
+      -D CUDA_FAST_MATH=1 \
+      -D WITH_CUBLAS=1 \
+      -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
+      -D BUILD_EXAMPLES=ON ..
+
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_TBB=ON -D BUILD_NEW_PYTHON_SUPPORT=ON -D WITH_V4L=ON -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D BUILD_EXAMPLES=ON -D WITH_QT=ON -D WITH_GTK=ON -D WITH_OPENGL=ON ..
+make -j8
+sudo make install
 ```
 
 ## Tips and Tricks
