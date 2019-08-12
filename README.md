@@ -218,23 +218,24 @@ sudo apt-get install gtk2.0-examples libgail-doc libgtk2.0-0 libgail18 libgail-d
      gir1.2-gtk-2.0 libgail18 libgtk2.0-dev
 sudo apt-get install libgtkglext1 libgtkglext1-dev
 sudo apt-get build-dep opencv
-
+sudo apg-get install libqt5svg5 libqt5gui5 libqt5widgets5 libqt5opengl5 libqt5xml5 unixodbc-dev libsybdb5 libglew-dev freeglut3-dev libpng-dev libturbojpeg libjpeg-turbo8 libusb-1.0-0 curl libhidapi-dev libhidapi-libusb0 libopenblas-dev libv4l-0 unzip ttf-mscorefonts-installer
 
 rm -rf build && mkdir build && cd build
 cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D CMAKE_INSTALL_PREFIX=/usr/local/opencv \
+      -D EIGEN_INCLUDE_PATH=/usr/include/eigen3 \
       -D INSTALL_C_EXAMPLES=ON \
       -D INSTALL_PYTHON_EXAMPLES=ON \
       -D WITH_TBB=ON \
       -D WITH_V4L=ON \
       -D BUILD_TIFF=ON \
       -D BUILD_NEW_PYTHON_SUPPORT=ON \
-      -D PYTHON3_EXECUTABLE=/usr/local/anaconda3/bin/python3 \
-      -D PYTHON3_INCLUDE_DIR=/usr/local/anaconda3/include \
-      -D PYTHON3_INCLUDE_DIR2=/usr/local/anaconda3/x86_64-conda_cos6-linux-gnu \
-      -D OPENCV_PYTHON3_INSTALL_PATH=/usr/local/anaconda3/lib/python3.6/site-packages \
-      -D WITH_QT=OFF \
-      -D WITH_GTK=ON \
+      -D PYTHON3_EXECUTABLE=/usr/bin/python3 \
+      -D PYTHON3_INCLUDE_DIR=/usr/include/python3.6m \
+      -D PYTHON3_INCLUDE_DIR2=/usr/include/x86_64-linux-gnu/python3.6m \
+      -D OPENCV_PYTHON3_INSTALL_PATH=/usr/local/lib/python3.6/dist-packages \
+      -D WITH_QT=ON \
+      -D WITH_GTK=OFF \
       -D WITH_OPENGL=ON \
       -D WITH_OPENCL=ON \
       -D WITH_CUDA=ON \
@@ -244,8 +245,8 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
       -D BUILD_EXAMPLES=ON ..
 
-cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_TBB=ON -D BUILD_NEW_PYTHON_SUPPORT=ON -D WITH_V4L=ON -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D BUILD_EXAMPLES=ON -D WITH_QT=ON -D WITH_GTK=ON -D WITH_OPENGL=ON ..
-make -j8
+make -j10
+
 sudo make install
 ```
 
