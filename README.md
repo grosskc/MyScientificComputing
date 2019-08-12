@@ -1,5 +1,15 @@
 # My Scientific Computing and Publishing Setup
 
+
+## Bash shell
+
+* Add the following to `.inputrc`
+
+```
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+```
+
 ## MacOS
 
 * Install [Brew](https://brew.sh) package manager for MacOS
