@@ -73,6 +73,12 @@ source venv/scipy/bin/activate
 python3 -m pip install --upgrade scikit-learn scikit-image matplotlib sympy pandas xarray cython tensorly pymc3 nose numexpr Pillow h5py netCDF4 cfunits wpca keras tensorflow pydot statsmodels constrNMPy spectral seaborn dask ipympl pyro-ppl torch torchvision pweave open3d-python trimesh[easy] pyntcloud
 ```
 
+* Install `libspatialindex` for `trimesh`
+
+```bash
+brew install spatialindex
+```
+
 * Inspect currently-installed packages
 
 ```bash
