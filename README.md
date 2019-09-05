@@ -70,7 +70,7 @@ source venv/scipy/bin/activate
 * Install scientific packages into the virtual environment
 
 ```bash
-python3 -m pip install --upgrade scikit-learn scikit-image matplotlib sympy pandas xarray cython tensorly pymc3 nose numexpr Pillow h5py netCDF4 cfunits wpca keras tensorflow pydot statsmodels constrNMPy spectral seaborn dask ipympl pyro-ppl torch torchvision pweave
+python3 -m pip install --upgrade scikit-learn scikit-image matplotlib sympy pandas xarray cython tensorly pymc3 nose numexpr Pillow h5py netCDF4 cfunits wpca keras tensorflow pydot statsmodels constrNMPy spectral seaborn dask ipympl pyro-ppl torch torchvision pweave open3d-python trimesh[easy] pyntcloud
 ```
 
 * Inspect currently-installed packages
