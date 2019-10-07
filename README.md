@@ -285,3 +285,10 @@ jupyter console --existing
 ```bash
 cookiecutter https://github.com/drivendata/cookiecutter-data-science
 ```
+
+* Profiling python code (use `qcachegrind` to view it)
+
+```bash
+brew install qcachegrind
+pprofile --format callgrind --out cachegrind.out.threads python_code.py
+```
