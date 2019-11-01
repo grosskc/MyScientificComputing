@@ -10,6 +10,22 @@
 "\e[B": history-search-forward
 ```
 
+## Conda environment
+```bash
+# wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh --no-check-certificate -O miniconda.sh
+# bash miniconda.sh -b -p /home/kevin/venv/conda
+# export PATH="/home/kevin/venv/conda/bin:$PATH"
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh --no-check-certificate -O miniconda.sh
+bash miniconda.sh -b -p /Users/kevin/venv/conda
+export PATH="/Users/kevin/venv/conda/bin:$PATH"
+conda update -q conda
+conda create -q -n conda-scipy python=3.7
+conda activate conda-scipy
+
+# install most trimesh requirements with built components from conda-forge
+conda install numpy scipy scikit-learn matplotlib sympy pandas xarray cython scikit-image
+```
+
 ## MacOS
 
 * Install [Brew](https://brew.sh) package manager for MacOS
