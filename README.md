@@ -23,7 +23,7 @@ conda create -q -n conda-scipy python=3.7
 conda activate conda-scipy
 
 # install most trimesh requirements with built components from conda-forge
-conda install numpy scipy scikit-learn matplotlib sympy pandas xarray cython scikit-image
+conda install numpy scipy scikit-learn matplotlib sympy pandas xarray cython scikit-image h5py
 ```
 
 ## MacOS
